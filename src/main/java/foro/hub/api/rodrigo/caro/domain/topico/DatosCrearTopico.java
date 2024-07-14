@@ -19,13 +19,13 @@ public record DatosCrearTopico(
 
 //        @NotNull
 //        @Future
-        LocalDateTime fechaCreacion,
+        LocalDateTime fecha_creacion,
 
         @NotNull
         Boolean status,
 
         //@NotNull
-        Long autor,
+        Long usuario,
 
         //@NotNull
         Long curso
