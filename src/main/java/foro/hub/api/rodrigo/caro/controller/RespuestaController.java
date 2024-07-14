@@ -3,6 +3,9 @@ package foro.hub.api.rodrigo.caro.controller;
 import foro.hub.api.rodrigo.caro.domain.repuesta.*;
 import foro.hub.api.rodrigo.caro.domain.topico.DatosActualizarTopico;
 import foro.hub.api.rodrigo.caro.domain.topico.Topico;
+import foro.hub.api.rodrigo.caro.domain.topico.TopicoRepository;
+import foro.hub.api.rodrigo.caro.domain.usuarios.UsuarioRepository;
+import foro.hub.api.rodrigo.caro.infra.errores.ValidacionDeIntegridad;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,9 +24,13 @@ public class RespuestaController {
     @Autowired
     private RespuestaRepository respuestaRepository;
 
+
+
     @PostMapping
-    public void crearRespuesta(@RequestBody @Valid DatosCrearRespuesta datosCrearRespuesta) {
+    @Transactional
+    public void crearRespuesta(@RequestBody @Valid DatosCrearRespuesta datosCrearRespuesta)throws ValidacionDeIntegridad {
         respuestaRepository.save(new Respuesta(datosCrearRespuesta));
+
     }
 
     @GetMapping

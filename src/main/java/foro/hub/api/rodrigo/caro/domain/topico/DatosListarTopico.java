@@ -19,7 +19,7 @@ public record DatosListarTopico(
 
         @NotNull
         @Future
-        LocalDateTime fechaCreacion,
+        LocalDateTime fecha_creacion,
 
         @NotNull
         Boolean status,
@@ -31,6 +31,6 @@ public record DatosListarTopico(
         Long curso
         ) {
     public DatosListarTopico(Topico topico) {
-        this(topico.getId() ,topico.getTitulo(), topico.getMensaje(), topico.getFechaCreacion(), topico.getStatus(), topico.getUsuario().getId(), topico.getCurso().getId());
+        this(topico.getId() ,topico.getTitulo(), topico.getMensaje(), topico.getFecha_creacion(), topico.getStatus(), topico.getUsuario().getId(), topico.getCurso().getId());
     }
 }

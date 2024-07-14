@@ -17,15 +17,15 @@ public record DatosCrearTopico(
         @NotBlank
         String mensaje,
 
-//        @NotNull
-//        @Future
-        LocalDateTime fechaCreacion,
+        @NotNull
+        @Future
+        LocalDateTime fecha_creacion,
 
         @NotNull
         Boolean status,
 
         //@NotNull
-        Long autor,
+        Long usuario,
 
         //@NotNull
         Long curso

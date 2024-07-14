@@ -28,7 +28,7 @@ public class Topico {
     private String mensaje;
 
 
-    private LocalDateTime fechaCreacion;
+    private LocalDateTime fecha_creacion;
 
     private Boolean status;
 
@@ -44,7 +44,7 @@ public class Topico {
     public Topico(DatosCrearTopico datosCrearTopico) {
         this.titulo = datosCrearTopico.titulo();
         this.mensaje =datosCrearTopico.mensaje();
-        this.fechaCreacion =datosCrearTopico.fechaCreacion();
+        this.fecha_creacion =datosCrearTopico.fecha_creacion();
         this.status=datosCrearTopico.status();
         //this.autor =datosCrearTopico.autor();
         //this.curso=datosCrearTopico.curso();
