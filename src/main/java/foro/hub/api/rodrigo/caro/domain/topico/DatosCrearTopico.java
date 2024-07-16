@@ -17,8 +17,8 @@ public record DatosCrearTopico(
         @NotBlank
         String mensaje,
 
-        @NotNull
-        @Future
+//        @NotNull
+//        @Future
         LocalDateTime fecha_creacion,
 
         @NotNull

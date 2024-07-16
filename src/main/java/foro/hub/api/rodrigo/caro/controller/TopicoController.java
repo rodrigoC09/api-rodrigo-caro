@@ -1,9 +1,9 @@
 package foro.hub.api.rodrigo.caro.controller;
 
-
+import foro.hub.api.rodrigo.caro.domain.curso.Curso;
+import foro.hub.api.rodrigo.caro.domain.curso.DatosActualizarCurso;
+import foro.hub.api.rodrigo.caro.domain.repuesta.DatosListarRespuesta;
 import foro.hub.api.rodrigo.caro.domain.topico.*;
-import foro.hub.api.rodrigo.caro.infra.errores.ValidacionDeIntegridad;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,20 +15,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
-@ResponseBody
 @RequestMapping("/topicos")
-@SecurityRequirement(name = "bearer-key")
+
 public class TopicoController {
 
     @Autowired
     private TopicoRepository topicoRepository;
 
     @PostMapping
-    @Transactional
     public ResponseEntity<DatosRespuestaTopico> crearTopico(@RequestBody @Valid DatosCrearTopico datosCrearTopico,
-                                                                UriComponentsBuilder uriComponentsBuilder) throws ValidacionDeIntegridad {
+                                                                UriComponentsBuilder uriComponentsBuilder) {
         Topico topico= topicoRepository.save(new Topico(datosCrearTopico));
 
         //Retornar 201
@@ -43,6 +42,15 @@ public class TopicoController {
         return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosListarTopico::new));
 
     }
+//    @GetMapping
+//    public ResponseEntity<Page<DatosListarTopico>> listarTopicos(@PageableDefault(sort = "fecha_creacion", size = 10) Pageable paginacion) {
+//        return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosListarTopico::new));
+//
+//    }
+//    @GetMapping
+//    public Page<DatosListarTopico> listarTopicos(@PageableDefault(sort = "titulo")Pageable paginacion) {
+//        return topicoRepository.findAll(paginacion).map(DatosListarTopico::new);
+//    }
 
 
     @PutMapping
